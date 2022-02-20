@@ -32,7 +32,6 @@ function App() {
         .then(res => {
             setListItems(res[0]);
             setCounterId(res[1]);
-            setMode(getThemeMode());
             setLoading(false);
         })
     }, [])
