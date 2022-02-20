@@ -72,7 +72,7 @@ function App() {
             <h4>{listItems.length} item(s)</h4>
             <ul>
                 {
-                    (loading && listItems.length === 0) ? <img className='loadingImg' src="/src/spinner.png" alt="loading.." /> : (
+                    (loading && listItems.length === 0 && !openForm) ? <img className='loadingImg' src="./src/spinner.png" alt="loading.." /> : (
                         listItems.map((item) => {
                             return ( 
                                 <li key={item.id}>
