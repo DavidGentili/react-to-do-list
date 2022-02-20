@@ -141,6 +141,70 @@
     animation: rotation 4s linear infinite;
 }
 
+.App .buttonChangeMode{
+    display: flex;
+    background: none;
+    border: none;
+    width: auto;
+    color: #242424;
+    margin: 24px 8px 0 auto;
+}
+
+.App-Dark{
+    color: #FFFFFF;
+}
+
+.App-Dark > button:hover:enabled{
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    transition-duration: .4s;
+}
+
+.App-Dark .buttonChangeMode{
+    color: #FFFFFF;
+}
+
+.App-Dark .buttonChangeMode:hover:enabled{
+    color: var(--blue);
+    border: none;
+}
+
+.App-Dark ul li{
+    background-color: #00406C;
+    box-shadow: 2px 4px 4px #00607A60;
+}
+
+.App-Dark ul li button{
+    opacity: .8;
+}
+
+.App-Dark .addForm{
+    background-color: #242424A0;
+}
+
+.App-Dark .addForm form{
+    background-color: #00253E;
+}
+
+.App-Dark .addForm form input{
+    border: 2px solid #FFFFFF;
+}
+
+.App-Dark .addForm form input:active,
+.App-Dark .addForm form input:focus,
+.App-Dark .addForm form input:hover{
+    border: 2px solid #AAAAAA;
+}
+
+.App-Dark .addForm form .buttonAdd:hover:enabled{
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+}
+
+.App-Dark .addForm form .buttonClose{
+    opacity: .8;
+}
+
 @keyframes rotation {
     from{transform: rotate(0deg);}
     to{transform: rotate(360deg);}

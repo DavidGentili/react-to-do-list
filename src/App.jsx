@@ -16,6 +16,7 @@ function App() {
     const [newItemValue, setNewItemValue] = useState('');
     const [loading, setLoading] = useState(true);
     const [counterId, setCounterId] = useState(1);
+    const [mode, setMode] = useState('light');
 
     useEffect(() => {
         Promise.all([api.items.fetch(), api.id.fetch()])
@@ -66,36 +67,41 @@ function App() {
         }
     }
 
+    const handlerChangeMode = (e) => {
+        setMode(mode === 'light' ? 'dark' : 'light');
+        document.querySelector('body').style.backgroundColor = (mode === 'light') ? '#00253E' : ''
+    }
+
     return (
-        <div className="App">
+        <div className={`App ${mode === 'dark' ? 'App-Dark' : ''}`}>
+                <button className='buttonChangeMode' onClick={handlerChangeMode}>Theme: {mode}</button>
+                <h1>My List</h1>
+                <h4>{listItems.length} item(s)</h4>
+                <ul>
+                    {
+                        (loading && listItems.length === 0 && !openForm) ? <img className='loadingImg' src={imageLoad} alt="loading.." /> : (
+                            listItems.map((item) => {
+                                return ( 
+                                    <li key={item.id}>
+                                        <p>{item.value}</p>
+                                        {!loading && <button onClick={eventRemove(item.id)}>Remove</button>}
+                                    </li>
+                                )
+                            })
+                        ) 
+                        
+                    }
+                </ul>
+                <button disabled={loading} onClick={(e) => {setOpenForm(!openForm)}}>add new element</button>
 
-            <h1>My List</h1>
-            <h4>{listItems.length} item(s)</h4>
-            <ul>
-                {
-                    (loading && listItems.length === 0 && !openForm) ? <img className='loadingImg' src={imageLoad} alt="loading.." /> : (
-                        listItems.map((item) => {
-                            return ( 
-                                <li key={item.id}>
-                                    <p>{item.value}</p>
-                                    {!loading && <button onClick={eventRemove(item.id)}>Remove</button>}
-                                </li>
-                            )
-                        })
-                    ) 
-                    
-                }
-            </ul>
-            <button disabled={loading} onClick={(e) => {setOpenForm(!openForm)}}>add new element</button>
-
-            {openForm && <div className="addForm">
-                <form onSubmit={handlerSubmit}>
-                    {!loading && <button className='buttonClose' type='button' onClick={handlerCloseForm} >X</button>}
-                    <h3>Add item</h3>
-                    <input autoFocus type="text" value={newItemValue} placeholder='item...' onChange={(e) => {setNewItemValue(e.target.value)}} />
-                    <button disabled={loading} className='buttonAdd' type='submit'>Add</button>
-                </form>
-            </div>}
+                {openForm && <div className="addForm">
+                    <form onSubmit={handlerSubmit}>
+                        {!loading && <button className='buttonClose' type='button' onClick={handlerCloseForm} >X</button>}
+                        <h3>Add item</h3>
+                        <input autoFocus type="text" value={newItemValue} placeholder='item...' onChange={(e) => {setNewItemValue(e.target.value)}} />
+                        <button disabled={loading} className='buttonAdd' type='submit'>Add</button>
+                    </form>
+                </div>}
         </div>
     )
 }
