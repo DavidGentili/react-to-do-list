@@ -9,6 +9,15 @@ const intialListItems = () => {
     return (items && Array.isArray(items)) ? items : []
 }
 
+const getThemeMode = () => {
+    console.log(localStorage.getItem('themeMode'))
+    return localStorage.getItem('themeMode') || 'light';
+}
+
+const setThemeMode = (mode) => {
+    localStorage.setItem('themeMode', mode);
+}
+
 function App() {
     
     const [openForm, setOpenForm] = useState(false);
@@ -16,13 +25,14 @@ function App() {
     const [newItemValue, setNewItemValue] = useState('');
     const [loading, setLoading] = useState(true);
     const [counterId, setCounterId] = useState(1);
-    const [mode, setMode] = useState('light');
+    const [mode, setMode] = useState(getThemeMode());
 
     useEffect(() => {
         Promise.all([api.items.fetch(), api.id.fetch()])
         .then(res => {
             setListItems(res[0]);
             setCounterId(res[1]);
+            setMode(getThemeMode());
             setLoading(false);
         })
     }, [])
@@ -31,6 +41,10 @@ function App() {
         setNewItemValue('');
     }, [openForm]);
     
+    useEffect(() => {
+        setThemeMode(mode);
+        document.querySelector('body').style.backgroundColor = (mode === 'dark') ? '#00253E' : ''
+    }, [mode])
 
     const handlerCloseForm = (e) => {
         e.preventDefault();
@@ -69,7 +83,6 @@ function App() {
 
     const handlerChangeMode = (e) => {
         setMode(mode === 'light' ? 'dark' : 'light');
-        document.querySelector('body').style.backgroundColor = (mode === 'light') ? '#00253E' : ''
     }
 
     return (
