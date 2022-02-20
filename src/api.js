@@ -12,7 +12,7 @@ export default {
         update: (items) => deffer(localStorage.setItem('listItems',JSON.stringify(items)))
     },
     id: {
-        fetch : () => deffer(JSON.parse(localStorage.getItem('counterId') || '[]')),
+        fetch : () => deffer(JSON.parse(localStorage.getItem('counterId') || 1)),
         update: (id) => deffer(localStorage.setItem('counterId',JSON.stringify(id)))   
     }
 }   
