@@ -1,0 +1,147 @@
+.App{
+    text-align: center;
+    color: #242424;
+    max-width: 600px;
+    margin: auto;
+}
+
+.App h1{
+    margin: 24px;
+}
+
+.App ul{
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 32px auto;
+}
+
+.App ul li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 12px 24px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 2px 4px 4px #24242460;
+}
+
+.App ul li button{
+    border: none;
+    background: none;
+    font-weight: 700;
+    transition-duration: .4s;
+    color: var(--red);
+    opacity: .6;
+}
+
+.App ul li button:hover{
+    opacity: 1;
+    transition-duration: .4s;
+}
+
+.App > button{
+    width: 100%;
+    font-size: 16px;
+    margin: auto;
+    padding: 8px;
+    background-color: var(--blue);
+    border: 2px solid var(--blue);
+    color: #FFFFFF;
+    transition-duration: .4s;
+}
+
+.App > button:hover:enabled{
+    background: none;
+    color: var(--blue);
+    transition-duration: .4s;
+}
+
+.App .addForm{
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1F1F1A0;
+}
+
+.App .addForm form{
+    width: 440px;
+    background-color: #FFFFFF;
+    padding: 28px 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #24242480;
+}
+
+.App .addForm form .buttonClose{
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: auto;
+    color: var(--red);
+    opacity: .6;
+    transition-duration: .4s;
+}
+
+.App .addForm form .buttonClose:hover:enabled{
+    opacity: 1;
+    transition-duration: .4s;
+}
+
+.App .addForm form h3{
+    margin: 16px auto;
+    font-size: 28px;
+}
+
+.App .addForm form input{
+    width: 100%;
+    font-size: 24px;
+    margin: 16px;
+    border: 2px solid #24242480;
+    border-radius: 4px;
+    padding: 8px;
+    outline: none;
+}
+
+.App .addForm form input:active,
+.App .addForm form input:focus,
+.App .addForm form input:hover{
+    border: 2px solid #242424;
+}
+
+.App .addForm form .buttonAdd{
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 4px;
+    transition-duration: .4s;
+}
+
+.App .addForm form .buttonAdd:hover:enabled{
+    background: none;
+    color: var(--blue);
+    transition-duration: .4s;
+}
+
+.App .loadingImg{
+    width: 54px;
+    animation: rotation 4s linear infinite;
+}
+
+@keyframes rotation {
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
